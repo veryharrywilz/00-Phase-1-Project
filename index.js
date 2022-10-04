@@ -35,8 +35,7 @@ function sneakByMonster() {
                 // edit? create Element?
                 let nextButton = document.createElement('button')
                 nextButton.textContent = "NEXT"
-                nextButton.addEventListener('click', (e) => {
-                    e.preventDefault()
+                nextButton.addEventListener('click', () => {
                     mountainHubWorld()
                     nextButton.remove()
                 })
@@ -94,8 +93,7 @@ function charmMonster() {
             battleText.textContent = "The monster was seduced by you. Congrats. You have a monster lover now, you weirdo."
             let nextButton = document.createElement('button')
             nextButton.textContent = "NEXT"
-            nextButton.addEventListener('click', (e) => {
-                e.preventDefault()
+            nextButton.addEventListener('click', () => {
                 nextButton.remove()
                 mountainHubWorld()
             })
@@ -124,8 +122,7 @@ function runFromMonster(){
             let nextButton = document.createElement('button')
             nextButton.textContent = "NEXT"
             storyHeadline.append(nextButton)
-            nextButton.addEventListener('click', (e) => {
-                e.preventDefault()
+            nextButton.addEventListener('click', () => {
                 nextButton.remove()
                 mountainHubWorld()
             })
@@ -149,10 +146,6 @@ function rollDice(diceType, checkType) {
     return result
 }
 
-//Starting Location
-document.addEventListener('DOMContentLoaded', () => {
-    tavernStart()
-})
 
 function gameOver() {
     storyText.textContent = "refresh the page to start again!"
@@ -168,6 +161,11 @@ function removeButtons() {
 // remove each button at the end of each event listener
 
 
+
+//Starting Location
+document.addEventListener('DOMContentLoaded', () => {
+    tavernStart()
+})
 
 function tavernStart() {
     let startingImage = "https://i0.wp.com/www.hipstersanddragons.com/wp-content/uploads/2019/08/dnd-adventures-tavern.jpg?fit=1200%2C648&ssl=1"
@@ -196,6 +194,7 @@ function tavernStart() {
 
 
 function mountainHubWorld() {
+    battleText.textContent = ""
     fightCounter += 1
     console.log(fightCounter)
     if (fightCounter > 3) {
