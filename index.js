@@ -195,37 +195,54 @@ function tavernStart() {
 
 function mountainHubWorld() {
     battleText.textContent = ""
-    fightCounter += 1
+    fightCounter+= 1
     console.log(fightCounter)
-    if (fightCounter > 3) {
-        let finalBossButton = document.createElement('button')
-        finalBossButton.textContent = "FINAL BOSS"
-        finalBossButton.addEventListener('click', travelToFinalBoss())
-        storyHeadline.append(finalBossButton)
+    if (fightCounter === 1) {
+        let nextButton = document.createElement('button')
+        nextButton.textContent = "NEXT"
+        nextButton.addEventListener('click', () => {
+        clownFight()
+        nextButton.remove()
+        })
+        storyHeadline.append(nextButton)
+    } else if (fightCounter === 2) {
+        let nextButton = document.createElement('button')
+        nextButton.textContent = "NEXT"
+        nextButton.addEventListener('click', () => {
+        sleepyGuyFight()
+        nextButton.remove()
+        })
+        storyHeadline.append(nextButton)
     }
+    //     (fightCounter > 3) {
+    //     let finalBossButton = document.createElement('button')
+    //     finalBossButton.textContent = "FINAL BOSS"
+    //     finalBossButton.addEventListener('click', travelToFinalBoss())
+    //     storyHeadline.append(finalBossButton)
+    // }
     encounterName.textContent = "You defeated that monster"
-    storyText.textContent = "It was a hard fought battle, but you emerged victorious, and now it's time to press on! Your HP has been restored after a moment of rest. Select your next combatant:"
+    storyText.textContent = "It was a hard fought battle, but you emerged victorious, and now it's time to press on! Your HP has been restored after a moment of rest. Move on to your next combatant:"
     encounterImage.src = "https://static.wikia.nocookie.net/emerald-isles/images/a/a7/Mountain_Travel.jpg/revision/latest?cb=20180209151032"
     battleText.textContent = ""
     playerHP = 20;
     //CLOWN FIGHT
-    let clownFightButton = document.createElement('button')
-    clownFightButton.textContent = "CLOWN"
-    clownFightButton.className = 'monster-buttons'
-    clownFightButton.addEventListener('click', e => {
-        removeMonsterButtons()
-        clownFight()
-    })
-    storyHeadline.append(clownFightButton)
-    //A SLEEPY GUY FIGHT
-    let sleepyGuyButton = document.createElement('button')
-    sleepyGuyButton.textContent = "A SLEEPY GUY"
-    sleepyGuyButton.className = 'monster-buttons'
-    sleepyGuyButton.addEventListener('click', e => {
-        removeMonsterButtons()
-        sleepyGuyFight()
-    })
-    storyHeadline.append(sleepyGuyButton)
+    // let clownFightButton = document.createElement('button')
+    // clownFightButton.textContent = "CLOWN"
+    // clownFightButton.className = 'monster-buttons'
+    // clownFightButton.addEventListener('click', e => {
+    //     removeMonsterButtons()
+    //     clownFight()
+    // })
+    // storyHeadline.append(clownFightButton)
+    // //A SLEEPY GUY FIGHT
+    // let sleepyGuyButton = document.createElement('button')
+    // sleepyGuyButton.textContent = "A SLEEPY GUY"
+    // sleepyGuyButton.className = 'monster-buttons'
+    // sleepyGuyButton.addEventListener('click', e => {
+    //     removeMonsterButtons()
+    //     sleepyGuyFight()
+    // })
+    // storyHeadline.append(sleepyGuyButton)
     //REMOVER MONSTER BUTTONS AFTER CLICK
 
 
@@ -324,3 +341,5 @@ function travelToFinalBoss() {
     // one owl bear object
         // a transition page for location
     // one dragon object
+
+// make mountainHubWorld a solely transition page (with only one button)
