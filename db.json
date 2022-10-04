@@ -8,7 +8,8 @@
         "dex": 7,
         "char": -1,
         "wisdom": 1,
-        "health": 20
+        "health": 20,
+        "info": "A rogue is a versatile assassin, capable of sneaky combat and nimble tricks. The rogue is stealthy and dexterous, and can often sneak by foes undetected."
     },
     
     {
@@ -19,7 +20,8 @@
         "dex": 3,
         "char": 7,
         "wisdom": 1,
-        "health": 30
+        "health": 30,
+        "info": "A bard is traditionally defined as a poet, especially one who writes impassioned, lyrical, or epic verse. They are highly charismatic individuals, who rely on their charm to deal with foes."
     },
 
     {
@@ -30,7 +32,8 @@
         "dex": -1,
         "char": 1,
         "wisdom": 4,
-        "health": 35
+        "health": 35,
+        "info": "A sorcerer is a master of arcane magic. Their strength comes from years of study in the arcane arts. Casting spells and dealing damage is their specialty."
     },
 
     {
@@ -41,7 +44,8 @@
         "dex": -3,
         "char": 0,
         "wisdom": -2,
-        "health": 45
+        "health": 45,
+        "info": "Barbarians are  big, brutal and strong warrior. Barbarians are centred around raging, hitting things. But they often fail when it comes to charisma or stealth"
     },
     {
         "id": 4,
@@ -51,7 +55,8 @@
         "dex": -2,
         "char": 1,
         "wisdom": 1,
-        "health": 40
+        "health": 40,
+        "info": "The paladin is a holy knight, crusading in the name of good and order, and is a divine spellcaster. They are mighty warriors who slay foes in the name of their divine god."
     },
     {
         "id": 6,
@@ -61,7 +66,8 @@
         "dex": 0,
         "char": 3,
         "wisdom": 3,
-        "health": 50
+        "health": 50,
+        "info": "Druids wield nature-themed magic. Druids have a unique ability that allows them to change into various animal forms, and various other qualities that assist them in natural settings."
     }
 ]
 }

@@ -50,7 +50,7 @@ function sneakByMonster() {
         } 
             else if (sneakCheck < monsterPerception) {
                 playerHP -= 5
-                battleText.textContent = `The troll spotted you before you got away. He takes a swing at you, and you took 5 damage! Your current health is ${playerHP}`
+                battleText.textContent = `The monster spotted you before you got away. He takes a swing at you, and you took 5 damage! Your current health is ${playerHP}`
                 if (playerHP <= 0) {
                     removeButtons()
                     gameOver()
@@ -134,21 +134,49 @@ function runFromMonster(){
 )}
 
 //MAKE YOUR CHARACTER (uncomment with db.json)
-// function characterSelector() {
-//     fetch(“http://localhost:3000/classes”)
-//     .then(resp => resp.json())
-//     .then(data => {
-//         data.forEach(character => {
-//             let characterCard = document.createElement('span')
-//             characterCard.className = “character-card”
-//             characterCard.textContent = character.name
-//             characterBar.append(characterCard)
-//             characterCard.addEventListener(‘click’, e => {
-//                 encounterImage.src = character.image
-//             })
-//         }
-//     )}
-// )}
+
+function characterSelector() { 
+    // Create confirm button to lock in character stats
+    let confirmCharacterButton = document.createElement('button')
+    confirmCharacterButton.addEventListener('click', e => {
+        tavernStart()
+        storyText.innerHTML = ``
+        confirmCharacterButton.remove()
+    })
+    confirmCharacterButton.textContent = "CONFIRM"
+    storyHeadline.append(confirmCharacterButton)
+
+    //Fetch possible Player Character stats
+    fetch('http://localhost:3000/classes')
+    .then(resp => resp.json())
+    .then(data => {
+        data.forEach(character => {
+            let characterCard = document.createElement('span')
+            characterCard.className = 'character-card'
+            characterCard.textContent = character.name
+            characterBar.append(characterCard)
+            characterCard.addEventListener('click', e => {
+                encounterImage.src = character.image
+                encounterName.textContent = `Character Class: ${character.name}`
+                storyText.innerHTML = `
+                <p>${character.info}</p>
+                <p>Strength Modifier: ${character.str}</p>
+                <p>Dexterity Modifier: ${character.dex}</p>
+                <p>Wisdom Modifier: ${character.wisdom}</p>
+                <p>Charisma Modifier: ${character.char}</p>
+                <p>Health Total: ${character.health}</p>`
+                
+                strength = character.str
+                dexterity = character.dex
+                charisma = character.char
+                wisdom = character.wisdom
+                playerHP = character.health 
+                })
+            })
+          }
+          )
+        }
+
 
 //HELPER FUNCTIONS
 function rollDice(diceType, checkType) {
