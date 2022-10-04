@@ -1,3 +1,7 @@
+document.addEventListener('DOMContentLoaded', () => {
+    characterSelector()
+})
+
 // global variables
 let encounterImage = document.getElementById("image")
 let storyText = document.getElementById("story-text")
@@ -6,6 +10,12 @@ let encounterName = document.getElementById('encounter')
 let battleText = document.createElement('p')
 let characterBar = document.getElementById('storyBook')
 storyHeadline.append(battleText)  //Used to desribe what's 'happening' in a battle. Set to "" after every fight
+let nextButtonToMountain = document.createElement('button')
+    nextButtonToMountain.textContent = "NEXT"
+    nextButtonToMountain.addEventListener('click', () => {
+        mountainHubWorld()
+        nextButtonToMountain.remove()
+    });
 
 //PLAYER VARIABLES
 //These will change when character creator fetch method is programmed
@@ -23,6 +33,7 @@ let monsterPerception = 0;
 let monsterCharmResistance = 0;
 let monsterStrength = 0;
 
+//ACTION BUTTONS
 //DEFINE SNEAK BUTTON
 let sneakButton = document.createElement('button')
 sneakButton.className = 'combat-buttons'
@@ -33,14 +44,7 @@ function sneakByMonster() {
         console.log(sneakCheck)
             if (sneakCheck >= monsterPerception) {
                 battleText.textContent = "You snuck away!"
-                // edit? create Element?
-                let nextButton = document.createElement('button')
-                nextButton.textContent = "NEXT"
-                nextButton.addEventListener('click', () => {
-                    mountainHubWorld()
-                    nextButton.remove()
-                })
-                storyHeadline.append(nextButton)
+                storyHeadline.append(nextButtonToMountain)
                 removeButtons()
                 return sneakCheck
         } 
@@ -90,15 +94,10 @@ charmButton.textContent = "Charm"
 function charmMonster() {
     charmButton.addEventListener('click', e => {
         let charmCheck = rollDice(20, charisma)
+        console.log(charmCheck)
         if (charmCheck >= monsterCharmResistance) {
             battleText.textContent = "The monster was seduced by you. Congrats. You have a monster lover now, you weirdo."
-            let nextButton = document.createElement('button')
-            nextButton.textContent = "NEXT"
-            nextButton.addEventListener('click', () => {
-                nextButton.remove()
-                mountainHubWorld()
-            })
-            storyHeadline.append(nextButton)
+            storyHeadline.append(nextButtonToMountain)
             removeButtons()
         } else if (charmCheck < monsterCharmResistance) {
             playerHP -=5
@@ -120,13 +119,7 @@ function runFromMonster(){
     let runCheck = rollDice(20, strength)
         if (runCheck >= monsterStrength) {
             battleText.textContent = "You ran under the troll's legs, and make a beeline for the mountain!"
-            let nextButton = document.createElement('button')
-            nextButton.textContent = "NEXT"
-            storyHeadline.append(nextButton)
-            nextButton.addEventListener('click', () => {
-                nextButton.remove()
-                mountainHubWorld()
-            })
+            storyHeadline.append(nextButtonToMountain)
             removeButtons()
         } else if (runCheck < monsterStrength) {
             playerHP -= 5
@@ -140,13 +133,29 @@ function runFromMonster(){
     }
 )}
 
+//MAKE YOUR CHARACTER (uncomment with db.json)
+// function characterSelector() {
+//     fetch(“http://localhost:3000/classes”)
+//     .then(resp => resp.json())
+//     .then(data => {
+//         data.forEach(character => {
+//             let characterCard = document.createElement('span')
+//             characterCard.className = “character-card”
+//             characterCard.textContent = character.name
+//             characterBar.append(characterCard)
+//             characterCard.addEventListener(‘click’, e => {
+//                 encounterImage.src = character.image
+//             })
+//         }
+//     )}
+// )}
 
+//HELPER FUNCTIONS
 function rollDice(diceType, checkType) {
     let roll = Math.floor(Math.random() * diceType)
     let result = roll + checkType
     return result
 }
-
 
 function gameOver() {
     storyText.textContent = "refresh the page to start again!"
@@ -159,15 +168,17 @@ function removeButtons() {
         button.remove()
     }
 }
-// remove each button at the end of each event listener
 
+function removeMonsterButtons() {
+    let monsterButtons = document.querySelectorAll('.monster-buttons')
+    for (const button of monsterButtons) {
+        button.remove()
+    }
+}
 
+//LOCATIONS
 
-//Starting Location
-document.addEventListener('DOMContentLoaded', () => {
-    tavernStart()
-})
-
+//FIRST LOCATION: TAVERN
 function tavernStart() {
     let startingImage = "https://i0.wp.com/www.hipstersanddragons.com/wp-content/uploads/2019/08/dnd-adventures-tavern.jpg?fit=1200%2C648&ssl=1"
     encounterImage.src = startingImage
@@ -193,50 +204,46 @@ function tavernStart() {
     })
 }
 
-
+//TRANSITION LOCATION: After each fight, the user returns to this page
 function mountainHubWorld() {
     battleText.textContent = ""
-    fightCounter += 1
+    fightCounter+= 1
     console.log(fightCounter)
-    if (fightCounter > 3) {
-        let finalBossButton = document.createElement('button')
-        finalBossButton.textContent = "FINAL BOSS"
-        finalBossButton.addEventListener('click', travelToFinalBoss())
-        storyHeadline.append(finalBossButton)
+    if (fightCounter === 1) {
+        let nextButton = document.createElement('button')
+        nextButton.textContent = "NEXT"
+        nextButton.addEventListener('click', () => {
+        clownFight()
+        nextButton.remove()
+        })
+        storyHeadline.append(nextButton)
+    } else if (fightCounter === 2) {
+        let nextButton = document.createElement('button')
+        nextButton.textContent = "NEXT"
+        nextButton.addEventListener('click', () => {
+        sleepyGuyFight()
+        nextButton.remove()
+        })
+        storyHeadline.append(nextButton)
+    } else if (fightCounter === 3) {
+        let nextButton = document.createElement('button')
+        nextButton.textContent = "NEXT"
+        nextButton.addEventListener('click', () => {
+        travelToFinalBoss()
+        nextButton.remove()
+        })
+        storyHeadline.append(nextButton)
     }
     encounterName.textContent = "You defeated that monster"
-    storyText.textContent = "It was a hard fought battle, but you emerged victorious, and now it's time to press on! Your HP has been restored after a moment of rest. Select your next combatant:"
+    storyText.textContent = "It was a hard fought battle, but you emerged victorious, and now it's time to press on! Your HP has been restored after a moment of rest. Move on to your next combatant:"
     encounterImage.src = "https://static.wikia.nocookie.net/emerald-isles/images/a/a7/Mountain_Travel.jpg/revision/latest?cb=20180209151032"
     battleText.textContent = ""
     playerHP = 20;
-    //CLOWN FIGHT
-    let clownFightButton = document.createElement('button')
-    clownFightButton.textContent = "CLOWN"
-    clownFightButton.className = 'monster-buttons'
-    clownFightButton.addEventListener('click', e => {
-        removeMonsterButtons()
-        clownFight()
-    })
-    storyHeadline.append(clownFightButton)
-    //A SLEEPY GUY FIGHT
-    let sleepyGuyButton = document.createElement('button')
-    sleepyGuyButton.textContent = "A SLEEPY GUY"
-    sleepyGuyButton.className = 'monster-buttons'
-    sleepyGuyButton.addEventListener('click', e => {
-        removeMonsterButtons()
-        sleepyGuyFight()
-    })
-    storyHeadline.append(sleepyGuyButton)
-    //REMOVER MONSTER BUTTONS AFTER CLICK
-
-
 }
-function removeMonsterButtons() {
-    let monsterButtons = document.querySelectorAll('.monster-buttons')
-    for (const button of monsterButtons) {
-        button.remove()
-    }}
 
+//MONSTER FIGHTS
+
+// 1: TROLL FIGHT
 function trollFight() {
     encounterImage.src = "https://i.ytimg.com/vi/OAvwVzODByQ/hqdefault.jpg"
     storyText.textContent = "On your route to the mountain, you must cross a river. You must first cross a bridge, guarded by a troll. What will you do to get around the troll?"
@@ -260,6 +267,7 @@ function trollFight() {
     storyHeadline.append(runButton)
 }
 
+// 2: CLOWN FIGHT
 function clownFight() {
     encounterImage.src = "https://m.media-amazon.com/images/M/MV5BMWFkY2MzMGUtMmMxYS00ZWU2LWE0NjMtYTcxNTNlYjIyODdjXkEyXkFqcGdeQXRzdGFzaWVr._V1_QL75_UX500_CR0,6,500,281_.jpg"
     storyText.textContent = "Oh no, there's a freaky clown blocking your path. What are you going to do?"
@@ -283,6 +291,7 @@ function clownFight() {
     storyHeadline.append(runButton)
 }
 
+// 3: SLEEPY GUY FIGHT
 function sleepyGuyFight() {
     encounterImage.src = "https://cdn.mos.cms.futurecdn.net/YMzrA4GXpKFdn8Ez2GH2JX.jpg"
     storyText.textContent = 'A man is asleep in his bed. He looks at you with a look of horror. "What did I do wrong?" he asks'
@@ -306,6 +315,7 @@ function sleepyGuyFight() {
     storyHeadline.append(runButton)
 }
 
+// 4: FINAL BOSS FIGHT
 function travelToFinalBoss() {
     encounterImage.src = "https://static.scientificamerican.com/blogs/cache/file/9C720750-2370-44E1-ACE260270EB7EA75_source.jpg?w=590&h=800&FAECB764-BEBE-4D3D-A7705363D7C3BF12"
     storyText.textContent = "A big ol dragon gonna eat your face"
