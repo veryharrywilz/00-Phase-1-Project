@@ -1,0 +1,67 @@
+{
+    "classes": [
+    {
+        "id": 1,
+        "name": "Rogue",
+        "image": "https://www.dndbeyond.com/avatars/thumbnails/6/384/420/618/636272820319276620.png",
+        "str": 3,
+        "dex": 7,
+        "char": -1,
+        "wisdom": 1,
+        "health": 20
+    },
+    
+    {
+        "id": 2,
+        "name": "Bard",
+        "image": "https://i.pinimg.com/originals/ba/ca/2a/baca2a69b07dbea8e245cedfee3a4cb4.png",
+        "str": 1,
+        "dex": 3,
+        "char": 7,
+        "wisdom": 1,
+        "health": 30
+    },
+
+    {
+        "id": 3,
+        "name": "Sorcerer",
+        "image": "https://i.pinimg.com/originals/18/6b/d6/186bd6ae41b291bab46c2f14c5d12260.jpg",
+        "str": 5,
+        "dex": -1,
+        "char": 1,
+        "wisdom": 4,
+        "health": 35
+    },
+
+    {
+        "id": 5,
+        "name": "Barbarian",
+        "image": "https://i.pinimg.com/736x/bf/9b/cf/bf9bcf8d514b36c6cf67b61f0df60caa.jpg",
+        "str": 8,
+        "dex": -3,
+        "char": 0,
+        "wisdom": -2,
+        "health": 45
+    },
+    {
+        "id": 4,
+        "name": "Paladin",
+        "image": "https://qph.cf2.quoracdn.net/main-qimg-06eb53292193370bc32825e99c001d19-lq",
+        "str": 7,
+        "dex": -2,
+        "char": 1,
+        "wisdom": 1,
+        "health": 40
+    },
+    {
+        "id": 6,
+        "name": "Druid",
+        "image": "https://www.dndbeyond.com/avatars/thumbnails/6/346/420/618/636272691461725405.png",
+        "str": 5,
+        "dex": 0,
+        "char": 3,
+        "wisdom": 3,
+        "health": 50
+    }
+]
+}
