@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    tavernStart()
+    characterSelector()
 })
 
 // global variables
@@ -131,6 +131,23 @@ function runFromMonster(){
         }
     }
 )}
+
+//MAKE YOUR CHARACTER (uncomment with db.json)
+// function characterSelector() {
+//     fetch(“http://localhost:3000/classes”)
+//     .then(resp => resp.json())
+//     .then(data => {
+//         data.forEach(character => {
+//             let characterCard = document.createElement('span')
+//             characterCard.className = “character-card”
+//             characterCard.textContent = character.name
+//             characterBar.append(characterCard)
+//             characterCard.addEventListener(‘click’, e => {
+//                 encounterImage.src = character.image
+//             })
+//         }
+//     )}
+// )}
 
 //HELPER FUNCTIONS
 function rollDice(diceType, checkType) {
