@@ -4,6 +4,7 @@ let storyText = document.getElementById("story-text")
 let storyHeadline = document.getElementById('story-headline')
 let encounterName = document.getElementById('encounter')
 let battleText = document.createElement('p')
+let characterBar = document.getElementById('storyBook')
 storyHeadline.append(battleText)  //Used to desribe what's 'happening' in a battle. Set to "" after every fight
 
 //PLAYER VARIABLES
