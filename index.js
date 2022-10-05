@@ -180,7 +180,7 @@ function characterSelector() {
 
 //HELPER FUNCTIONS
 function rollDice(diceType, checkType) {
-    let roll = Math.floor(Math.random() * diceType)
+    let roll = Math.ceil(Math.random() * diceType) //conceptually think about dice!
     let result = roll + checkType
     return result
 }
@@ -266,7 +266,7 @@ function mountainHubWorld() {
     storyText.textContent = "It was a hard fought battle, but you emerged victorious, and now it's time to press on! Your HP has been restored after a moment of rest. Move on to your next combatant:"
     encounterImage.src = "https://static.wikia.nocookie.net/emerald-isles/images/a/a7/Mountain_Travel.jpg/revision/latest?cb=20180209151032"
     battleText.textContent = ""
-    playerHP = 20;
+    playerHP = 20; // must edit to reset health for each character 
 }
 
 //MONSTER FIGHTS
