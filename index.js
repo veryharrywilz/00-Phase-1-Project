@@ -19,11 +19,11 @@ let nextButtonToMountain = document.createElement('button')
 
 //PLAYER VARIABLES
 //These will change when character creator fetch method is programmed
-let strength = 5
-let dexterity = 3
-let charisma = -1
-let wisdom = 1
-let playerHP = 20
+let strength = 0
+let dexterity = 0
+let charisma = 0
+let wisdom = 0
+let playerHP = 0
 let fightCounter = 0 //keeps track of the number of fights before the final boss can be available
 
 //MONSTER VARIABLES
@@ -68,17 +68,17 @@ function attackMonster() {
         let attackCheck = rollDice(20, strength)
         if (attackCheck >= monsterArmor) {
             let damage = rollDice(8, strength)
-            monsterHealth -= damage
+            monsterHealth = monsterHealth - damage
             console.log(monsterHealth)
-            battleText.textContent = `You dealt ${damage} damage to the troll. It has ${monsterHealth} hit points left!`
+            battleText.textContent = `You dealt ${damage} damage to the monster. It has ${monsterHealth} hit points left!`
             if (monsterHealth <= 0) {
                 removeButtons()
                 mountainHubWorld()
             }
         } else if (attackCheck < monsterArmor) {
-            let trollAttack = rollDice(8, 5)
-            playerHP -= trollAttack
-            battleText.textContent = `Your attack missed! The troll counter attacks and deals ${trollAttack} damage to you. You have ${playerHP} hit points left!`
+            let monsterAttack = rollDice(8, 5)
+            playerHP = playerHP - monsterAttack
+            battleText.textContent = `Your attack missed! The monster counter attacks and deals ${monsterAttack} damage to you. You have ${playerHP} hit points left!`
             if (playerHP <= 0) {
                 removeButtons()
                 gameOver()
@@ -134,14 +134,13 @@ function runFromMonster(){
 )}
 
 //MAKE YOUR CHARACTER (uncomment with db.json)
-
 function characterSelector() { 
     // Create confirm button to lock in character stats
     let confirmCharacterButton = document.createElement('button')
     confirmCharacterButton.addEventListener('click', e => {
         tavernStart()
-        storyText.innerHTML = ``
         confirmCharacterButton.remove()
+        removeSpan()
     })
     confirmCharacterButton.textContent = "CONFIRM"
     storyHeadline.append(confirmCharacterButton)
@@ -204,6 +203,13 @@ function removeMonsterButtons() {
     }
 }
 
+function removeSpan() {
+    let removeTopMenu = document.querySelectorAll('.character-card')
+    for(let classCategory of removeTopMenu) {
+        classCategory.remove()
+    }
+}
+
 //LOCATIONS
 
 //FIRST LOCATION: TAVERN
@@ -211,7 +217,7 @@ function tavernStart() {
     let startingImage = "https://i0.wp.com/www.hipstersanddragons.com/wp-content/uploads/2019/08/dnd-adventures-tavern.jpg?fit=1200%2C648&ssl=1"
     encounterImage.src = startingImage
     encounterName.textContent = "It's a dark and stormy night..."
-    storyText.textContent = "You find yourself in a tavern. It's grimy, smells of ale, and the floor is sticky from years of uncleaned spills. A man approaches you and asks you to slay a dragon that lives in the mountain. Will you accept?"
+    storyText.innerHTML = "You find yourself in a tavern. It's grimy, smells of ale, and the floor is sticky from years of uncleaned spills. A man approaches you and asks you to slay a dragon that lives in the mountain. Will you accept?"
     let yesButton = document.createElement('button')
     yesButton.textContent = 'yes'
     let noButton = document.createElement('button')
