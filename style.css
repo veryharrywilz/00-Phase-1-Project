@@ -55,5 +55,14 @@ input[type="text"] {
 }
 
 #image{
-  height: 300px;
+  height: 500px;
 }
+
+#character-stats{
+text-align: left;
+margin: 20px;
+display: inline-block;
+position: absolute;
+left: 0;
+}
+
