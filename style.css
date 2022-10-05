@@ -27,7 +27,7 @@ html, body {
 .character-card {
   padding: 1%;
   height: 100px;
-  display: flex;
+  display: fixed;
   justify-content: center;
   font-size: 3vh;
   align-items: center;
@@ -58,6 +58,10 @@ input[type="text"] {
   height: 500px;
 }
 
+#character-display-image {
+  width: 250px
+}
+
 #character-stats{
 text-align: left;
 margin: 20px;
@@ -66,3 +70,32 @@ position: absolute;
 left: 0;
 }
 
+.character-card:hover {
+  padding: 2px 2%;
+  color: red;
+}
+
+.combat-buttons:hover {
+  padding: 2px 2%;
+  color: red;
+}
+
+.confirm-button:hover {
+  padding: 2px 2%;
+  color: green;
+}
+
+#yes-button:hover {
+  padding: 2px 2%;
+  color: green;
+}
+
+#no-button:hover {
+  padding: 2px 2%;
+  color: red;
+}
+
+.next-button:hover {
+  padding: 2px 2%;
+  color: green;
+}
