@@ -38,6 +38,8 @@ let displaySneak = document.getElementById('dexMod')
 let displayCharm = document.getElementById('charMod')
 let displayRun = document.getElementById('runMod')
 let displayWisdom = document.getElementById('wisMod')
+let characterDisplayImage = document.getElementById('character-display-image')
+let characterDisplayImageSrc = ""
 
 //MONSTER VARIABLES
 let monsterHealth = 0;
@@ -63,7 +65,8 @@ function sneakByMonster() {
         } 
             else if (sneakCheck < monsterPerception) {
                 playerHP -= 5
-                battleText.textContent = `The monster spotted you before you got away. He takes a swing at you, and you took 5 damage! Your current health is ${playerHP}`
+                displayHealth.textContent = `Health: ${playerHP}`
+                battleText.textContent = `The monster spotted you before you got away. He takes a swing at you, and you took 5 DAMAGE! Your current health is ${playerHP}`
                 if (playerHP <= 0) {
                     removeButtons()
                     gameOver()
@@ -85,7 +88,7 @@ function attackMonster() {
             monsterHealth = monsterHealth - damage
             console.log(monsterHealth)
             //console.log(monsterHealth)
-            battleText.textContent = `You dealt ${damage} damage to the monster. It has ${monsterHealth} hit points left!`
+            battleText.textContent = `You dealt ${damage} DAMAGE to the monster. It has ${monsterHealth} hit points left!`
             if (monsterHealth <= 0) {
                 removeButtons()
                 mountainHubWorld()
@@ -93,8 +96,9 @@ function attackMonster() {
         } else if (attackCheck < monsterArmor) {
             let monsterAttack = rollDice(8, 5)
             playerHP = playerHP - monsterAttack
+            displayHealth.textContent = `Health: ${playerHP}`
             console.log(playerHP)
-            battleText.textContent = `Your attack missed! The monster counter attacks and deals ${monsterAttack} damage to you. You have ${playerHP} hit points left!`
+            battleText.textContent = `Your attack missed! The monster counter attacks and deals ${monsterAttack} DAMAGE to you. You have ${playerHP} hit points left!`
             if (playerHP <= 0) {
                 removeButtons()
                 gameOver()
@@ -117,7 +121,8 @@ function charmMonster() {
             removeButtons()
         } else if (charmCheck < monsterCharmResistance) {
             playerHP -=5
-            battleText.textContent = `The monster was confused by your advances, and smacks you with a club. You take 5 damage! Your current health is ${playerHP}`
+            displayHealth.textContent = `Health: ${playerHP}`
+            battleText.textContent = `The monster was confused by your advances, and smacks you on the head. You take 5 DAMAGE! Your current health is ${playerHP}`
             if (playerHP <= 0) {
                 removeButtons()
                 gameOver()
@@ -139,8 +144,9 @@ function runFromMonster(){
             removeButtons()
         } else if (runCheck < monsterStrength) {
             playerHP -= 5
+            displayHealth.textContent = `Health: ${playerHP}`
             //console.log(playerHP)
-            battleText.textContent = `You tried to bolt around the monster, but he took a swing at you and hits you for 5 damage. Your current health is ${playerHP}`
+            battleText.textContent = `You tried to bolt around the monster, but he took a swing at you and hits you for 5 DAMAGE. Your current health is ${playerHP}`
             if (playerHP <= 0) {
                 removeButtons()
                 gameOver()
@@ -153,6 +159,7 @@ function runFromMonster(){
 function characterSelector() { 
     // Create confirm button to lock in character stats
     let confirmCharacterButton = document.createElement('button')
+    confirmCharacterButton.className = 'confirm-button'
     confirmCharacterButton.addEventListener('click', e => {
         tavernStart()
         displayClass.textContent = `Class: ${characterClass}`
@@ -162,6 +169,7 @@ function characterSelector() {
         displayCharm.textContent = `Charm Modifier: ${charisma}`
         displayRun.textContent = `Run Modifier: ${strength}`
         displayWisdom.textContent = `Wisdom Modifier: ${wisdom}`
+        characterDisplayImage.src = characterDisplayImageSrc
         confirmCharacterButton.remove()
         removeSpan()
     })
@@ -194,6 +202,7 @@ function characterSelector() {
                 charisma = character.char
                 wisdom = character.wisdom
                 playerHP = character.health
+                characterDisplayImageSrc = character.image
                 })
             })
           }
@@ -238,14 +247,16 @@ function removeSpan() {
 
 //FIRST LOCATION: TAVERN
 function tavernStart() {
-    let startingImage = "https://i0.wp.com/www.hipstersanddragons.com/wp-content/uploads/2019/08/dnd-adventures-tavern.jpg?fit=1200%2C648&ssl=1"
+    let startingImage = "https://64.media.tumblr.com/0cbdcfa76d2eb280b4c3214f2aca019f/tumblr_on7bfiwtZX1ujca6vo1_640.gif"
     encounterImage.src = startingImage
     encounterName.textContent = "It's a dark and stormy night..."
     storyText.innerHTML = "You find yourself in a tavern. It's grimy, smells of ale, and the floor is sticky from years of uncleaned spills. A man approaches you and asks you to slay a dragon that lives in the mountain. Will you accept?"
     let yesButton = document.createElement('button')
-    yesButton.textContent = 'yes'
+    yesButton.id = "yes-button"
+    yesButton.textContent = 'Yes'
     let noButton = document.createElement('button')
-    noButton.textContent = 'no'
+    noButton.id = 'no-button'
+    noButton.textContent = 'No'
     storyHeadline.append(yesButton)
     storyHeadline.append(noButton)
     yesButton.addEventListener('click', (e) => {
@@ -270,6 +281,7 @@ function mountainHubWorld() {
     if (fightCounter === 1) {
         let nextButton = document.createElement('button')
         nextButton.textContent = "NEXT"
+        nextButton.className = 'next-button'
         nextButton.addEventListener('click', () => {
             clownFight()
             nextButton.remove()
@@ -294,12 +306,13 @@ function mountainHubWorld() {
     }
     encounterName.textContent = "You defeated that monster"
     storyText.textContent = "Your HP has been restored after a moment of rest. Move on to your next combatant:"
-    encounterImage.src = "https://static.wikia.nocookie.net/emerald-isles/images/a/a7/Mountain_Travel.jpg/revision/latest?cb=20180209151032"
+    encounterImage.src = "https://cdnb.artstation.com/p/assets/images/images/023/229/887/original/tolunay-genc-forest.gif?1578523234"
     battleText.textContent = ""
     fetch("http://localhost:3000/classes") // must edit to reset health for each character 
     .then(resp => resp.json())
     .then(data => {
         playerHP = data[playerID - 1].health
+        displayHealth.textContent = `Health: ${playerHP}`
     })
 }
 
@@ -307,7 +320,7 @@ function mountainHubWorld() {
 
 // 1: TROLL FIGHT
 function trollFight() {
-    encounterImage.src = "https://qph.cf2.quoracdn.net/main-qimg-bcc2229353e9b73ae49393f8d92b8470-lq"
+    encounterImage.src = "https://i.pinimg.com/originals/92/e5/6f/92e56ffb13f7181271c0e4c199250dc3.gif"
     storyText.textContent = "On your route to the mountain, you must cross a river. You must first cross a bridge, guarded by a troll. What will you do to get around the troll?"
     encounterName.textContent = "A TROLL ON THE BRIDGE"
     monsterHealth = 30
@@ -331,9 +344,9 @@ function trollFight() {
 
 // 2: CLOWN FIGHT
 function clownFight() {
-    encounterImage.src = "https://m.media-amazon.com/images/M/MV5BMWFkY2MzMGUtMmMxYS00ZWU2LWE0NjMtYTcxNTNlYjIyODdjXkEyXkFqcGdeQXRzdGFzaWVr._V1_QL75_UX500_CR0,6,500,281_.jpg"
+    encounterImage.src = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/6bc7b51d-855f-4139-b283-345a9d91f7ef/dcizo60-e590a22d-148f-42ed-9d18-5d12a466ea8d.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzZiYzdiNTFkLTg1NWYtNDEzOS1iMjgzLTM0NWE5ZDkxZjdlZlwvZGNpem82MC1lNTkwYTIyZC0xNDhmLTQyZWQtOWQxOC01ZDEyYTQ2NmVhOGQuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.TB_P7d32yqxigZHsj1iP2X_hwhvRbRmXeudBWH9_PPc"
     storyText.textContent = "Oh no, there's a freaky clown blocking your path. What are you going to do?"
-    encounterName.textContent = "A KILLER CELESTIAL CLOWN BLOCKS YOUR PATH"
+    encounterName.textContent = "A KILLER SPACE CLOWN BLOCKS YOUR PATH"
     monsterHealth = 20
     monsterArmor = 10
     monsterPerception = 17
@@ -352,7 +365,7 @@ function clownFight() {
 
 // 3: SLEEPY GUY FIGHT
 function owlBearFight() {
-    encounterImage.src = "https://i.pinimg.com/originals/37/d8/54/37d854318335b618b238510631d65890.jpg"
+    encounterImage.src = "https://c.tenor.com/USr7Yxl97O0AAAAd/owl-bear-claws.gif"
     storyText.textContent = 'When venturing toward the mountain, you encounter a hungry Owl Bear! It stares you down, and after a tense moment, it charges you. What will you do?'
     encounterName.textContent = "AN OWL BEAR APPEARS"
     monsterHealth = 30
