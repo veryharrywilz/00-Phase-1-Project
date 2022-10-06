@@ -75,6 +75,24 @@ left: 0;
   color: red;
 }
 
+#story-text{
+  text-align: center;
+  display: inline-block;
+  width: 500px;
+}
+
+.battleText{
+  text-align: center;
+  display: inline-block;
+  width: 500px;
+}
+
+
+
+
+
+
+
 .combat-buttons:hover {
   padding: 2px 2%;
   color: red;
