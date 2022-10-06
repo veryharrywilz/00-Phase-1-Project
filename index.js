@@ -658,9 +658,9 @@ function runFromMonster2(){
 )}
 
 let nextButtonToMountain2 = document.createElement('button')
-    nextButtonToMountain2.textContent = "NEXT"
-    nextButton.textContent = "NEXT"
-    nextButtonToMountain2.addEventListener('click', () => {
+nextButtonToMountain2.textContent = "NEXT"
+nextButtonToMountain2.className = "next-button"
+nextButtonToMountain2.addEventListener('click', () => {
         gameOver()
-        nextButtonToMountain.remove()
+        nextButtonToMountain2.remove()
     });
