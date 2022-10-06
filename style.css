@@ -13,6 +13,7 @@ html, body {
   background-color: red;
   color: white;
   padding: 0.5em;
+  font-family: luminari, fantasy;
 }
 
 #character-bar {
@@ -33,6 +34,7 @@ html, body {
   align-items: center;
   border-radius: 2em;
   border: 1px solid white;
+  font-family: Luminari, fantasy;
 }
 
 #storyBook{
@@ -91,11 +93,17 @@ left: 0;
 
 
 
-
+.combat-buttons {
+  font-family: luminari, fantasy;
+}
 
 .combat-buttons:hover {
   padding: 2px 2%;
   color: red;
+}
+
+.confirm-button {
+  font-family: luminari, fantasy;
 }
 
 .confirm-button:hover {
@@ -103,17 +111,32 @@ left: 0;
   color: green;
 }
 
+#yes-button {
+  font-family: luminari, fantasy;
+}
+
 #yes-button:hover {
   padding: 2px 2%;
   color: green;
+
+}
+
+#no-button {
+  font-family: luminari, fantasy;
 }
 
 #no-button:hover {
   padding: 2px 2%;
   color: red;
+
+}
+
+.next-button {
+  font-family: luminari, fantasy;
 }
 
 .next-button:hover {
   padding: 2px 2%;
   color: green;
+
 }

@@ -14,7 +14,8 @@ battleText.className = "battle-text"
 let characterBar = document.getElementById('storyBook')
 storyHeadline.append(battleText)  //Used to desribe what's 'happening' in a battle. Set to "" after every fight
 let nextButtonToMountain = document.createElement('button')
-    nextButtonToMountain.textContent = "NEXT"
+nextButtonToMountain.textContent = "NEXT"
+nextButtonToMountain.className = "next-button"
     nextButtonToMountain.addEventListener('click', () => {
         mountainHubWorld()
         nextButtonToMountain.remove()
@@ -290,6 +291,7 @@ function mountainHubWorld() {
         storyHeadline.append(nextButton)
     } else if (fightCounter === 2) {
         let nextButton = document.createElement('button')
+        nextButton.className = 'next-button'
         nextButton.textContent = "NEXT"
         nextButton.addEventListener('click', () => {
             owlBearFight()
@@ -298,6 +300,7 @@ function mountainHubWorld() {
         storyHeadline.append(nextButton)
     } else if (fightCounter === 3) {
         let nextButton = document.createElement('button')
+        nextButton.className = 'next-button'
         nextButton.textContent = "NEXT"
         nextButton.addEventListener('click', () => {
             beholderFight()
@@ -306,6 +309,7 @@ function mountainHubWorld() {
         storyHeadline.append(nextButton)
     } else if (fightCounter === 4) {
         let nextButton = document.createElement('button')
+        nextButton.className = 'next-button'
         nextButton.textContent = "NEXT"
         nextButton.addEventListener('click', () => {
             cubeFight()
@@ -314,6 +318,7 @@ function mountainHubWorld() {
         storyHeadline.append(nextButton)
     } else if (fightCounter === 5) {
         let nextButton = document.createElement('button')
+        nextButton.className = 'next-button'
         nextButton.textContent = "NEXT"
         nextButton.addEventListener('click', () => {
             lichFight()
@@ -322,6 +327,7 @@ function mountainHubWorld() {
         storyHeadline.append(nextButton)
     } else if (fightCounter === 6) {
         let nextButton = document.createElement('button')
+        nextButton.className = 'next-button'
         nextButton.textContent = "NEXT"
         nextButton.addEventListener('click', () => {
             dragonGuardFight()
@@ -331,6 +337,7 @@ function mountainHubWorld() {
     }
     else if (fightCounter === 7) {
         let nextButton = document.createElement('button')
+        nextButton.className = 'next-button'
         nextButton.textContent = "NEXT"
         nextButton.addEventListener('click', () => {
             travelToFinalBoss()
@@ -652,6 +659,7 @@ function runFromMonster2(){
 
 let nextButtonToMountain2 = document.createElement('button')
     nextButtonToMountain2.textContent = "NEXT"
+    nextButton.textContent = "NEXT"
     nextButtonToMountain2.addEventListener('click', () => {
         gameOver()
         nextButtonToMountain.remove()
