@@ -6,19 +6,20 @@ html, body {
   margin: 0;
   padding: 0;
   text-align: center;
+  background: black;
 }
 
 .logo{
   text-align: center;
-  background-color: red;
+  background-color: rgb(126, 5, 5);
   color: white;
+  text-shadow: 4px 4px black;
   padding: 0.5em;
   font-family: luminari, fantasy;
 }
 
 #character-bar {
   height: 15vh;
-  background: rgb(49, 109, 179);
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -26,15 +27,16 @@ html, body {
 }
 
 .character-card {
-  padding: 1%;
-  height: 100px;
+  height: 35px;
+  width: 200px;
   display: fixed;
   justify-content: center;
   font-size: 3vh;
   align-items: center;
-  border-radius: 2em;
+  border-radius: 10px 10px 10px;
   border: 1px solid white;
   font-family: Luminari, fantasy;
+  color: white;
 }
 
 #storyBook{
@@ -70,23 +72,32 @@ margin: 20px;
 display: inline-block;
 position: absolute;
 left: 0;
+color: white;
+font-family: 'Atari', sans-serif;
 }
 
 .character-card:hover {
   padding: 2px 2%;
-  color: red;
+  color: rgb(126, 5, 5);
+  text-shadow: 0.5px 0.5px black;
 }
 
 #story-text{
   text-align: center;
-  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
   width: 500px;
+  font-family: 'Atari', sans-serif;
+  color: white;                                                               
 }
 
-.battleText{
+.battle-text{
   text-align: center;
-  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
   width: 500px;
+  font-family: 'Atari', sans-serif;
+  color: white;
 }
 
 
@@ -99,7 +110,7 @@ left: 0;
 
 .combat-buttons:hover {
   padding: 2px 2%;
-  color: red;
+  color: rgb(126, 5, 5);
 }
 
 .confirm-button {
@@ -108,7 +119,7 @@ left: 0;
 
 .confirm-button:hover {
   padding: 2px 2%;
-  color: green;
+  color: rgb(10, 86, 10);
 }
 
 #yes-button {
@@ -117,7 +128,7 @@ left: 0;
 
 #yes-button:hover {
   padding: 2px 2%;
-  color: green;
+  color: rgb(10, 86, 10);
 
 }
 
@@ -127,7 +138,7 @@ left: 0;
 
 #no-button:hover {
   padding: 2px 2%;
-  color: red;
+  color: rgb(126, 5, 5);
 
 }
 
@@ -137,6 +148,6 @@ left: 0;
 
 .next-button:hover {
   padding: 2px 2%;
-  color: green;
+  color: rgb(10, 86, 10);
 
 }
