@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    encounterImage.src = "https://static.3dbaza.com/original_models/258923/7282411cc7fb4d55bfffe03a.jpg"
+    encounterImage.src = "images/monster-slayer-select-char.jpg"
     encounterName.textContent = "SELECT YOUR CHARACTER"
     characterSelector()
 })
