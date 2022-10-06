@@ -149,5 +149,13 @@ font-family: 'Atari', sans-serif;
 .next-button:hover {
   padding: 2px 2%;
   color: rgb(10, 86, 10);
+}
 
+#health {
+  color: red;
+}
+
+#encounter {
+  color: white;
+  font-family: 'Atari', sans-serif;
 }
