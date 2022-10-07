@@ -91,6 +91,15 @@ font-family: 'Atari', sans-serif;
   color: white;                                                               
 }
 
+#story-headline {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+  font-family: 'Atari', sans-serif;
+  color: white;                                                               
+}
+
 .battle-text{
   text-align: center;
   margin-left: auto;

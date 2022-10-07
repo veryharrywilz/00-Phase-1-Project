@@ -224,6 +224,12 @@ function gameOver() {
     encounterImage.src = "https://media2.giphy.com/media/fdGbhuUQpGQkkuuzIr/giphy.gif?cid=790b7611e33dd408c151140c921a412412477df9f4681155&rid=giphy.gif&ct=ts"
 }
 
+function victory() {
+    storyHeadline.textContent = "You defeated the dragon and saved the town! YOU'RE A HERO! Refresh the page to begin a new adventure"
+    encounterName.textContent = "YOU DID IT!!!"
+    encounterImage.src = "https://i.pinimg.com/originals/da/dc/e9/dadce90550cfc17a01708d58db98a970.gif"
+}
+
 function removeButtons() {
     let combatButton = document.querySelectorAll('.combat-buttons')
     for (const button of combatButton) {
@@ -357,8 +363,9 @@ function mountainHubWorld() {
     })
 }
 
-//MONSTER FIGHTS
 
+
+//MONSTER FIGHTS
 // 1: TROLL FIGHT
 function trollFight() {
     encounterImage.src = "https://i.pinimg.com/originals/92/e5/6f/92e56ffb13f7181271c0e4c199250dc3.gif"
@@ -521,7 +528,7 @@ let attackButton2 = document.createElement('button')
 attackButton2.className = 'combat-buttons'
 attackButton2.textContent = "Attack"
 function attackMonster2() {
-    attackButton.addEventListener('click', e => {
+    attackButton2.addEventListener('click', e => {
         let attackCheck = rollDice(20, strength)
         if (attackCheck >= monsterArmor) {
             let damage = rollDice(8, strength)
@@ -532,7 +539,7 @@ function attackMonster2() {
             battleText.textContent = `You deal ${damage} DAMAGE to the dragon. It has ${monsterHealth} hit points left!`
             if (monsterHealth <= 0) {
                 removeButtons()
-                mountainHubWorld()
+                victory()
             }
         } else if (attackCheck < monsterArmor) {
             let monsterAttack = rollDice(8, 5)
