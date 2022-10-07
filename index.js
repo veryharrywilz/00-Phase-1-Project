@@ -371,16 +371,10 @@ function trollFight() {
     monsterStrength = 18
     //Sneak Option
     sneakByMonster();
-    storyHeadline.append(sneakButton)
-    // Attack option
     attackMonster();
-    storyHeadline.append(attackButton)
-    // Charm option
-    charmMonster()
-    storyHeadline.append(charmButton)
-    //Run option
-    runFromMonster()
-    storyHeadline.append(runButton)
+    charmMonster();
+    runFromMonster();
+    storyHeadline.append(sneakButton, attackButton, charmButton, runButton)
 }
 
 // 2: CLOWN FIGHT
@@ -394,14 +388,7 @@ function clownFight() {
     monsterCharmResistance = 17
     monsterStrength = 13
     console.log(monsterHealth)
-    //Sneak Option
-    storyHeadline.append(sneakButton)
-    // Attack option
-    storyHeadline.append(attackButton)
-    // Charm option
-    storyHeadline.append(charmButton)
-    //Run option
-    storyHeadline.append(runButton)
+    storyHeadline.append(sneakButton, attackButton, charmButton, runButton)
 }
 
 // 3: OWL BEAR FIGHT
@@ -415,14 +402,7 @@ function owlBearFight() {
     monsterCharmResistance = 12
     monsterStrength = 19
     console.log(monsterHealth)
-    //Sneak Option
-    storyHeadline.append(sneakButton)
-    // Attack option
-    storyHeadline.append(attackButton)
-    // Charm option
-    storyHeadline.append(charmButton)
-    //Run option
-    storyHeadline.append(runButton)
+    storyHeadline.append(sneakButton, attackButton, charmButton, runButton)
 }
 
 
@@ -437,14 +417,7 @@ function beholderFight() {
     monsterCharmResistance = 12
     monsterStrength = 19
     console.log(monsterHealth)
-    //Sneak Option
-    storyHeadline.append(sneakButton)
-    // Attack option
-    storyHeadline.append(attackButton)
-    // Charm option
-    storyHeadline.append(charmButton)
-    //Run option
-    storyHeadline.append(runButton)
+    storyHeadline.append(sneakButton, attackButton, charmButton, runButton)
 }
 
 function cubeFight() {
@@ -457,14 +430,7 @@ function cubeFight() {
     monsterCharmResistance = 18
     monsterStrength = 16
     console.log(monsterHealth)
-    //Sneak Option
-    storyHeadline.append(sneakButton)
-    // Attack option
-    storyHeadline.append(attackButton)
-    // Charm option
-    storyHeadline.append(charmButton)
-    //Run option
-    storyHeadline.append(runButton)
+    storyHeadline.append(sneakButton, attackButton, charmButton, runButton)
 }
 
 function lichFight() {
@@ -477,14 +443,7 @@ function lichFight() {
     monsterCharmResistance = 19
     monsterStrength = 15
     console.log(monsterHealth)
-    //Sneak Option
-    storyHeadline.append(sneakButton)
-    // Attack option
-    storyHeadline.append(attackButton)
-    // Charm option
-    storyHeadline.append(charmButton)
-    //Run option
-    storyHeadline.append(runButton)
+    storyHeadline.append(sneakButton, attackButton, charmButton, runButton)
 }
 
 function dragonGuardFight() {
@@ -497,21 +456,8 @@ function dragonGuardFight() {
     monsterCharmResistance = 19
     monsterStrength = 18
     console.log(monsterHealth)
-    //Sneak Option
-    storyHeadline.append(sneakButton)
-    // Attack option
-    storyHeadline.append(attackButton)
-    // Charm option
-    storyHeadline.append(charmButton)
-    //Run option
-    storyHeadline.append(runButton)
+    storyHeadline.append(sneakButton, attackButton, charmButton, runButton)
 }
-
-
-
-
-
-
 
 
 
@@ -532,18 +478,11 @@ function travelToFinalBoss() {
     monsterCharmResistance = 24
     monsterStrength = 26
     console.log(monsterHealth)
-    //Sneak Option
     sneakByMonster2()
-    storyHeadline.append(sneakButton2)
-    // Attack option
     attackMonster2()
-    storyHeadline.append(attackButton2)
-    // Charm option
     charmMonster2()
-    storyHeadline.append(charmButton2)
-    //Run option
     runFromMonster2()
-    storyHeadline.append(runButton2)
+    storyHeadline.append(sneakButton2, attackButton2, charmButton2, runButton2)
 }
 
 
