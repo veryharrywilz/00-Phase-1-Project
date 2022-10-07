@@ -44,7 +44,7 @@
         "dex": -3,
         "char": 0,
         "wisdom": -2,
-        "health": 45,
+        "health": 40,
         "info": "Barbarians are  big, brutal and strong warriors. Their combat style is centered around raging and hitting things. But they often fail when it comes to charisma or stealth"
     },
     {
@@ -55,14 +55,14 @@
         "dex": -2,
         "char": 1,
         "wisdom": 1,
-        "health": 40,
+        "health": 45,
         "info": "The paladin is a holy knight, crusading in the name of good and order, and is a divine spellcaster. They are mighty warriors who slay foes in the name of their divine god."
     },
     {
         "id": 6,
         "name": "Druid",
         "image": "https://64.media.tumblr.com/f882e70c2360aca8cb4df98cb8baf1c3/tumblr_nwy56rWRn51rznluto1_r1_250.gifv",
-        "str": 5,
+        "str": 6,
         "dex": 0,
         "char": 3,
         "wisdom": 3,
